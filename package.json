@@ -1,0 +1,49 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "save-to-raindrop",
+  "title": "save-to-raindrop",
+  "description": "Opens a form for adding a new bookmark to Raindrop using the URL from the current browser window.",
+  "icon": "raindrop-icon.png",
+  "author": "danphilibin",
+  "license": "MIT",
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "ray publish"
+  },
+  "commands": [
+    {
+      "name": "index",
+      "title": "Save bookmark",
+      "description": "Save a bookmark to Raindrop",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "raindropToken",
+      "required": true,
+      "title": "Access token",
+      "description": "Enter your Raindrop.io Test access token.",
+      "type": "textfield"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.41.1",
+    "node-fetch": "^3.2.10",
+    "run-applescript": "^6.0.0",
+    "ts-open-graph-scraper": "^0.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "16.10.3",
+    "@types/react": "18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  }
+}
