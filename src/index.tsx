@@ -1,4 +1,4 @@
-import { Form, ActionPanel, Action, showToast } from "@raycast/api";
+import { Form, ActionPanel, Action, showHUD } from "@raycast/api";
 import { getInfoFromBrowser } from "./util/url";
 import { raindropRequest } from "./util/raindrop";
 import { useCollections } from "./util/useCollections";
@@ -31,7 +31,7 @@ export default function Command() {
           : { $id: Number(values.collection) },
       pleaseParse: {},
     }).then(() => {
-      showToast({ title: "Bookmark created" });
+      showHUD("Bookmark created");
     });
   }
 
