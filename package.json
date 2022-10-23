@@ -16,7 +16,7 @@
   "commands": [
     {
       "name": "index",
-      "title": "Save bookmark",
+      "title": "Save current page to Raindrop.io",
       "description": "Save a bookmark to Raindrop",
       "mode": "view"
     }
