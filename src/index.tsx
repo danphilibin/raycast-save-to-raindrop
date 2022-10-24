@@ -1,4 +1,4 @@
-import { Form, ActionPanel, Action, showHUD } from "@raycast/api";
+import { Form, ActionPanel, Action, showHUD, popToRoot } from "@raycast/api";
 import { getInfoFromBrowser } from "./util/url";
 import { raindropRequest } from "./util/raindrop";
 import { useCollections } from "./util/useCollections";
@@ -32,6 +32,7 @@ export default function Command() {
       pleaseParse: {},
     }).then(() => {
       showHUD("Bookmark created");
+      popToRoot();
     });
   }
 
@@ -40,7 +41,11 @@ export default function Command() {
       isLoading={!og}
       actions={
         <ActionPanel>
-          <Action.SubmitForm onSubmit={handleSubmit} />
+          <Action.SubmitForm
+            onSubmit={(values: Values) => {
+              handleSubmit(values);
+            }}
+          />
         </ActionPanel>
       }
     >
