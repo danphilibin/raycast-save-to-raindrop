@@ -11,6 +11,7 @@ type Values = {
   description: string;
   collection: string;
   tags: string[];
+  newTags: string;
 };
 
 export default function Command() {
@@ -20,10 +21,12 @@ export default function Command() {
   const og = useOpenGraph(url.url);
 
   function handleSubmit(values: Values) {
+    const newTags = values.newTags.split(",").map((tag) => tag.trim());
+
     raindropRequest("/raindrop", "POST", {
       link: values.url,
       title: values.title,
-      tags: values.tags,
+      tags: [...values.tags, newTags],
       description: values.description,
       collection:
         values.collection === "__UNSORTED__"
@@ -79,6 +82,12 @@ export default function Command() {
           />
         ))}
       </Form.TagPicker>
+      {/* TagPicker doesn't support creating new entries so we need a separate input */}
+      <Form.TextField
+        id="newTags"
+        title="New tags"
+        info="Separate multiple values with commas"
+      />
       <Form.TextField id="title" title="Title" defaultValue={url.title} />
       {!!og && (
         <>
